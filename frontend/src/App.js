@@ -42,10 +42,8 @@ function App() {
         }
       );
 
-      // Ensure the response is in JSON format
       const data = res.data;
 
-      // Check if the response contains the expected result
       if (data && data.prediction) {
         setResult(`Analysis result: ${data.prediction}`);
       } else {
@@ -62,32 +60,48 @@ function App() {
     <div
       style={{
         padding: "2rem",
-        fontFamily: "Arial",
-        maxWidth: "600px",
+        fontFamily: "'Roboto', sans-serif",
+        maxWidth: "800px",
         margin: "auto",
+        textAlign: "center",
+        backgroundColor: "#f9f9f9",
+        borderRadius: "10px",
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
       }}
     >
-      <h2>Code Safety Checker</h2>
+      <h1 style={{ color: "#333", marginBottom: "1rem" }}>Code Safety Checker</h1>
+      <p style={{ color: "#555", marginBottom: "2rem" }}>
+        Upload your code file to check for vulnerabilities.
+      </p>
 
       <input
         type="file"
         accept=".c,.cpp,.py,.js,.txt"
         onChange={handleFileChange}
+        style={{
+          padding: "0.5rem",
+          border: "1px solid #ccc",
+          borderRadius: "5px",
+          marginBottom: "1rem",
+        }}
       />
       <br />
-      <br />
 
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      {errorMessage && (
+        <p style={{ color: "red", marginBottom: "1rem" }}>{errorMessage}</p>
+      )}
 
       <button
         onClick={handleUpload}
         disabled={!file || loading}
         style={{
-          padding: "0.5rem 1rem",
-          backgroundColor: "#007bff",
+          padding: "0.75rem 1.5rem",
+          backgroundColor: loading ? "#ccc" : "#007bff",
           color: "white",
           border: "none",
-          cursor: "pointer",
+          borderRadius: "5px",
+          cursor: loading ? "not-allowed" : "pointer",
+          fontSize: "1rem",
         }}
       >
         {loading ? "Checking..." : "Check File"}
@@ -96,9 +110,18 @@ function App() {
       <br />
       <br />
       {result && (
-        <p>
+        <div
+          style={{
+            marginTop: "2rem",
+            padding: "1rem",
+            backgroundColor: result.includes("VULNERABLE") ? "#f8d7da" : "#e9f7ef",
+            border: result.includes("VULNERABLE") ? "1px solid #f5c6cb" : "1px solid #d4edda",
+            borderRadius: "5px",
+            color: result.includes("VULNERABLE") ? "#721c24" : "#155724",
+          }}
+        >
           <strong>Result:</strong> {result}
-        </p>
+        </div>
       )}
     </div>
   );

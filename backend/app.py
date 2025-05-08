@@ -17,7 +17,7 @@ app.add_middleware(
     allow_headers=["*"],  # Allow all headers
 )
 # Load model and tokenizer once on app startup
-model_dir = "C:/Users/Jeremy/Desktop/cmpe132_LLMproject/training/fine_tuned_codet5"
+model_dir = r"C:/Users/zheng/Downloads/CMPE132-LLM/cmpe132_LLMproject/training/fine_tuned_codebert_new"
 tokenizer = AutoTokenizer.from_pretrained(model_dir)
 model = AutoModelForSequenceClassification.from_pretrained(model_dir)
 
