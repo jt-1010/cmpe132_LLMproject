@@ -242,3 +242,5 @@ ios/
 fine_tuned_codet5
 fine_tuned_codebert
 results
+results_codet5
+bert_tuned_model
