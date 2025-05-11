@@ -11,13 +11,13 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allow all origins or specify your frontend URL
+    allow_origins=["*"],  
     allow_credentials=True,
-    allow_methods=["*"],  # Allow all methods
-    allow_headers=["*"],  # Allow all headers
+    allow_methods=["*"],  
+    allow_headers=["*"],  
 )
 # Load model and tokenizer once on app startup
-model_dir = r"C:/Users/zheng/Downloads/CMPE132-LLM/cmpe132_LLMproject/training/fine_tuned_codebert_new"
+model_dir = "C:/Users/Jeremy/Desktop/cmpe132_LLMproject/training/fine_tuned_codebert_new"
 tokenizer = AutoTokenizer.from_pretrained(model_dir)
 model = AutoModelForSequenceClassification.from_pretrained(model_dir)
 
@@ -57,7 +57,6 @@ async def upload_file(file: UploadFile = File(...)):
             content = await file.read()
             f.write(content)
 
-        # Print confirmation
         print(f"File {file.filename} saved at {save_path}")
 
         # Run model on the uploaded C code
