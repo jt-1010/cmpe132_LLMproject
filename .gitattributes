@@ -6,3 +6,4 @@
 *.json filter=lfs diff=lfs merge=lfs -text
 *.csv filter=lfs diff=lfs merge=lfs -text
 training/fine_tuned_codebert_new/model.safetensors filter=lfs diff=lfs merge=lfs -text
+training/fine_tuned_codebert_better/model.safetensors filter=lfs diff=lfs merge=lfs -text
